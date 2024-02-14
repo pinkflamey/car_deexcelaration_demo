@@ -4,12 +4,20 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Button = UnityEngine.UIElements.Button;
 
 public class UIController : MonoBehaviour
 {
     public LevelController lc;
+    [Header("Distance meter")]
     public Slider distanceSlider;
     public TextMeshProUGUI distanceText;
+    [Header("Acceleration setting")]
+    public TMP_InputField accelerationInputField;
+    [Header("Buttons")]
+    public Button runButton;
+    public Button resetButton;
+    
 
     private void Start()
     {
@@ -19,6 +27,7 @@ public class UIController : MonoBehaviour
     private void Update()
     {
         UpdateDistanceMeter();
+        UpdateButtons();
     }
 
     private void InitializeDistanceMeter()
@@ -34,5 +43,37 @@ public class UIController : MonoBehaviour
             lc.carMover.resetPoint.position);
         distanceSlider.value = distance;
         distanceText.text = Mathf.Round(distance).ToString();
+    }
+
+    public void UpdateAccelerationSetting()
+    {
+        float parsedInput;
+        float.TryParse(accelerationInputField.text, out parsedInput);
+
+        lc.carMover.acceleration = parsedInput;
+    }
+
+    private void UpdateButtons()
+    {
+        if (lc.carMover.run == true)
+        {
+            runButton.SetEnabled(false);
+            resetButton.SetEnabled(true);
+        }
+        else
+        {
+            runButton.SetEnabled(true);
+            resetButton.SetEnabled(false);
+        }
+    }
+
+    public void RunButton()
+    {
+        lc.carMover.run = true;
+    }
+
+    public void ResetButton()
+    {
+        lc.Reset = true;
     }
 }

@@ -8,7 +8,7 @@ public class LevelController : MonoBehaviour
     public CarMover carMover;
     public Vector2 startPos;
 
-    public static bool Reset { get; set; }
+    public bool Reset { get; set; }
 
     private void Start()
     {
