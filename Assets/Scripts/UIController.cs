@@ -15,8 +15,8 @@ public class UIController : MonoBehaviour
     [Header("Acceleration setting")]
     public TMP_InputField accelerationInputField;
     [Header("Buttons")]
-    public Button runButton;
-    public Button resetButton;
+    public UnityEngine.UI.Button runButton;
+    public UnityEngine.UI.Button resetButton;
     
 
     private void Start()
@@ -57,13 +57,13 @@ public class UIController : MonoBehaviour
     {
         if (lc.carMover.run == true)
         {
-            runButton.SetEnabled(false);
-            resetButton.SetEnabled(true);
+            runButton.interactable = false;
+            resetButton.interactable = true;
         }
         else
         {
-            runButton.SetEnabled(true);
-            resetButton.SetEnabled(false);
+            runButton.interactable = true;
+            resetButton.interactable = false;
         }
     }
 
