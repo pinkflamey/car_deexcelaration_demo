@@ -43,6 +43,9 @@ public class LevelController : MonoBehaviour
             
         Destroy(boxesParent);
         boxesParent = Instantiate(boxesPrefab, _boxesStartPosition, Quaternion.identity);
+
+        if (slowResetCoroutine != null) StopCoroutine(slowResetCoroutine);
+        slowResetCoroutine = null;
     }
     
     public IEnumerator ResetSlow()
