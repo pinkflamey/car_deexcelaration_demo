@@ -62,12 +62,22 @@ public class UIController : MonoBehaviour
         if (lc.carMover.carState == CarMover.State.Running)
         {
             runButton.interactable = false;
+            var runColor = runButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color;
+            runButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(runColor.r, runColor.g, runColor.b, 0.5f);
+            
             resetButton.interactable = true;
+            var resetColor = resetButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color;
+            resetButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(resetColor.r, resetColor.g, resetColor.b, 1f);
         }
         else
         {
             runButton.interactable = true;
+            var runColor = runButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color;
+            runButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(runColor.r, runColor.g, runColor.b, 1f);
+            
             resetButton.interactable = false;
+            var resetColor = resetButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color;
+            resetButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(resetColor.r, resetColor.g, resetColor.b, 0.5f);
         }
     }
 
