@@ -7,6 +7,9 @@ public class LevelController : MonoBehaviour
 {
     public CarMover carMover;
     public Vector2 startPos;
+    public GameObject boxesParent;
+    public GameObject boxesPrefab;
+    private Vector2 boxesStartPosition;
 
     public bool Reset { get; set; }
 
@@ -14,6 +17,7 @@ public class LevelController : MonoBehaviour
     {
         startPos = new Vector2(carMover.resetPoint.position.x - 78, carMover.transform.position.y);
         carMover.transform.position = startPos;
+        boxesStartPosition = boxesParent.transform.position;
     }
 
     private void Update()
@@ -32,11 +36,13 @@ public class LevelController : MonoBehaviour
             carMover.speed = carMover.startingSpeed;
             carMover.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             carMover.GetComponent<Rigidbody2D>().angularVelocity = 0;
-            //carMover.GetComponent<Rigidbody2D>().inertia = 0;
             carMover.acceleration = 0;
             carMover.GetComponent<Rigidbody2D>().rotation = 0;
             transform.rotation = new Quaternion(0, 0, 0, 0);
             carMover.transform.position = startPos;
+            
+            Destroy(boxesParent);
+            boxesParent = Instantiate(boxesPrefab, boxesStartPosition, Quaternion.identity);
         }
     }
 }
