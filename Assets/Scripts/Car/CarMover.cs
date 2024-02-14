@@ -7,6 +7,8 @@ using UnityEngine.Serialization;
 
 public class CarMover : MonoBehaviour
 {
+    public enum State { Waiting, Running }
+    
     public LevelController lc;
 
     public float startingSpeed;
@@ -16,7 +18,7 @@ public class CarMover : MonoBehaviour
     public float minSpeed;
     public float maxSpeed;
 
-    public bool run;
+    public State carState;
 
     private void Start()
     {
@@ -25,7 +27,7 @@ public class CarMover : MonoBehaviour
 
     private void Update()
     {
-        if (run)
+        if (carState == State.Running)
         {
             speed += acceleration * Time.deltaTime;
             

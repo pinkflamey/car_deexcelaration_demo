@@ -59,7 +59,7 @@ public class UIController : MonoBehaviour
 
     private void UpdateButtons()
     {
-        if (lc.carMover.run == true)
+        if (lc.carMover.carState == CarMover.State.Running)
         {
             runButton.interactable = false;
             resetButton.interactable = true;
@@ -73,7 +73,7 @@ public class UIController : MonoBehaviour
 
     public void RunButton()
     {
-        lc.carMover.run = true;
+        lc.carMover.carState = CarMover.State.Running;
     }
 
     public void ResetButton()
