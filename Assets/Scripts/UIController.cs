@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UIElements;
 using Button = UnityEngine.UIElements.Button;
+using Slider = UnityEngine.UI.Slider;
 
 public class UIController : MonoBehaviour
 {
     public LevelController lc;
+    public CameraSwitcher cs;
     [Header("Distance meter")]
     public Slider distanceSlider;
     public TextMeshProUGUI distanceText;
@@ -17,6 +19,8 @@ public class UIController : MonoBehaviour
     [Header("Buttons")]
     public UnityEngine.UI.Button runButton;
     public UnityEngine.UI.Button resetButton;
+    [Header("Camera switching")]
+    public TMP_Dropdown cameraDropdown;
     
 
     private void Start()
@@ -28,6 +32,7 @@ public class UIController : MonoBehaviour
     {
         UpdateDistanceMeter();
         UpdateButtons();
+        
     }
 
     private void InitializeDistanceMeter()
@@ -75,5 +80,10 @@ public class UIController : MonoBehaviour
     public void ResetButton()
     {
         lc.Reset = true;
+    }
+
+    public void UpdateCamera()
+    {
+        cs.SwitchToCamera(cs.cameras[cameraDropdown.value]);
     }
 }
