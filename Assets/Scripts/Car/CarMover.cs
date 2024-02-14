@@ -7,8 +7,7 @@ using UnityEngine.Serialization;
 
 public class CarMover : MonoBehaviour
 {
-    public Transform boxBorder;
-    public TextMeshProUGUI infoText;
+    public Transform resetPoint;
 
     public float startingSpeed;
 
@@ -26,7 +25,6 @@ public class CarMover : MonoBehaviour
 
     private void Update()
     {
-
         if (run)
         {
             speed += acceleration * Time.deltaTime;
@@ -47,29 +45,5 @@ public class CarMover : MonoBehaviour
             );
         }
 
-        infoText.text = "Begin snelheid: " + startingSpeed * 3.6f + "km/uur\nAfstand tot doos: " +
-                        "78 meter\nVul de versnelling in" +
-                        " zodat de auto net op tijd stopt voor de doos\n";
-
     }
-
-    private void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.tag == "box")
-        {
-            LevelController.Reset = true;
-        }
-    }
-
-    /*
-     * Bij een eenparig vertraagde beweging vertraagd een voorwerp met een constante vertraging, waardoor de snelheid
-     * per seconde steeds met dezelfde hoeveelheid afneemt. De eindsnelheid kan je altijd met de
-     * volgende formule berekenen:
-       ve = vb + a x t
-       ve is de eindsnelheid in meter per seconde (m/s).
-       vb is de beginsnelheid in meter per seconde (m/s).
-       a is de versnelling in meter per seconde kwadraat (m/s2)
-       t is de tijdsduur in seconde (s)
-       
-     */
 }
