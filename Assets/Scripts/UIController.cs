@@ -32,20 +32,19 @@ public class UIController : MonoBehaviour
     {
         UpdateDistanceMeter();
         UpdateButtons();
-        
     }
 
     private void InitializeDistanceMeter()
     {
         distanceSlider.minValue = 0;
         distanceSlider.maxValue = Vector2.Distance(lc.carMover.transform.position,
-            lc.carMover.resetPoint.position);
+            lc.resetPoint.position);
     }
 
     private void UpdateDistanceMeter()
     {
         var distance = Vector2.Distance(lc.carMover.transform.position,
-            lc.carMover.resetPoint.position);
+            lc.resetPoint.position);
         distanceSlider.value = distance;
         distanceText.text = Mathf.Round(distance).ToString();
     }
@@ -79,7 +78,7 @@ public class UIController : MonoBehaviour
 
     public void ResetButton()
     {
-        lc.Reset = true;
+        lc.Reset();
     }
 
     public void UpdateCamera()

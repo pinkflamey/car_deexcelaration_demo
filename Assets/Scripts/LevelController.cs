@@ -6,43 +6,49 @@ using UnityEngine;
 public class LevelController : MonoBehaviour
 {
     public CarMover carMover;
+    public Transform resetPoint;
     public Vector2 startPos;
     public GameObject boxesParent;
     public GameObject boxesPrefab;
-    private Vector2 boxesStartPosition;
+    public float slowResetDelay;
+    private Vector2 _boxesStartPosition;
 
-    public bool Reset { get; set; }
+    public Coroutine slowResetCoroutine;
 
     private void Start()
     {
-        startPos = new Vector2(carMover.resetPoint.position.x - 78, carMover.transform.position.y);
+        startPos = carMover.transform.position;
         carMover.transform.position = startPos;
-        boxesStartPosition = boxesParent.transform.position;
+        _boxesStartPosition = boxesParent.transform.position;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R) ||
-            Vector2.Distance(carMover.transform.position, carMover.resetPoint.position) < 1f)
+        if (Input.GetKeyDown(KeyCode.R))
         {
-            Reset = true;
+            Reset();
         }
-        
-        if (Reset)
-        {
-            Reset = !Reset;
+    }
+
+    public void Reset()
+    {
+        carMover.run = false;
+        carMover.speed = carMover.startingSpeed;
+        carMover.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        carMover.GetComponent<Rigidbody2D>().angularVelocity = 0;
+        carMover.acceleration = 0;
+        carMover.GetComponent<Rigidbody2D>().rotation = 0;
+        transform.rotation = new Quaternion(0, 0, 0, 0);
+        carMover.transform.position = startPos;
             
-            carMover.run = false;
-            carMover.speed = carMover.startingSpeed;
-            carMover.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            carMover.GetComponent<Rigidbody2D>().angularVelocity = 0;
-            carMover.acceleration = 0;
-            carMover.GetComponent<Rigidbody2D>().rotation = 0;
-            transform.rotation = new Quaternion(0, 0, 0, 0);
-            carMover.transform.position = startPos;
-            
-            Destroy(boxesParent);
-            boxesParent = Instantiate(boxesPrefab, boxesStartPosition, Quaternion.identity);
-        }
+        Destroy(boxesParent);
+        boxesParent = Instantiate(boxesPrefab, _boxesStartPosition, Quaternion.identity);
+    }
+    
+    public IEnumerator ResetSlow()
+    {
+        yield return new WaitForSeconds(slowResetDelay);
+        Reset();
+        slowResetCoroutine = null;
     }
 }

@@ -7,7 +7,7 @@ using UnityEngine.Serialization;
 
 public class CarMover : MonoBehaviour
 {
-    public Transform resetPoint;
+    public LevelController lc;
 
     public float startingSpeed;
 
@@ -43,7 +43,23 @@ public class CarMover : MonoBehaviour
                 speed,
                 GetComponent<Rigidbody2D> ().velocity.y
             );
+            
+            var hits = Physics2D.OverlapCircleAll(transform.position + new Vector3(2.5f, 0, 0), 1.5f);
+            foreach (var c in hits)
+            {
+                if (!c.CompareTag("box")) return;
+                if (lc.slowResetCoroutine != null) return;
+                lc.slowResetCoroutine = StartCoroutine(lc.ResetSlow());
+            }
         }
 
+        
+
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position + new Vector3(2.5f, 0, 0), 1.5f);
     }
 }
