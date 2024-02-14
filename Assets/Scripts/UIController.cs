@@ -45,8 +45,16 @@ public class UIController : MonoBehaviour
     {
         var distance = Vector2.Distance(lc.carMover.transform.position,
             lc.resetPoint.position);
-        distanceSlider.value = distance;
-        distanceText.text = Mathf.Round(distance).ToString();
+        if (lc.carMover.transform.position.x > lc.resetPoint.position.x)
+        {
+            distanceSlider.value = 0;
+            distanceText.text = "0";
+        }
+        else
+        {
+            distanceSlider.value = distance;
+            distanceText.text = Mathf.Round(distance).ToString(); 
+        }
     }
 
     public void UpdateAccelerationSetting()
@@ -68,6 +76,8 @@ public class UIController : MonoBehaviour
             resetButton.interactable = true;
             var resetColor = resetButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color;
             resetButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(resetColor.r, resetColor.g, resetColor.b, 1f);
+
+            accelerationInputField.interactable = false;
         }
         else
         {
@@ -78,6 +88,8 @@ public class UIController : MonoBehaviour
             resetButton.interactable = false;
             var resetColor = resetButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color;
             resetButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(resetColor.r, resetColor.g, resetColor.b, 0.5f);
+
+            accelerationInputField.interactable = true;
         }
     }
 
