@@ -23,7 +23,7 @@ public class CarMover : MonoBehaviour
 
     private void Start()
     {
-        speed = startingSpeed;
+        speed = startingSpeed / 3.6f;
     }
 
     private void Update()
