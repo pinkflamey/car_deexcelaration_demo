@@ -15,8 +15,6 @@ public class UIController : MonoBehaviour
     public TextMeshProUGUI distanceText;
     [Header("Acceleration setting")]
     public TMP_InputField accelerationInputField;
-    public string inputFieldText;
-    public string inputFieldTextBlinking;
     [Header("Buttons")]
     public UnityEngine.UI.Button runButton;
     public UnityEngine.UI.Button resetButton;
@@ -69,28 +67,16 @@ public class UIController : MonoBehaviour
         if (lc.carMover.carState == CarMover.State.Running)
         {
             runButton.interactable = false;
-            /*var runColor = runButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color;
-            runButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(runColor.r, runColor.g, runColor.b, 0.5f);
-            */
             
             resetButton.interactable = true;
-            /*var resetColor = resetButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color;
-            resetButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(resetColor.r, resetColor.g, resetColor.b, 1f);
-            */
 
             accelerationInputField.interactable = false;
         }
         else
         {
             runButton.interactable = true;
-            /*var runColor = runButton.transform.GetChild(0).GetComponent<Image>().tintColor;
-            runButton.transform.GetChild(0).GetComponent<Image>().tintColor = new Color(runColor.r, runColor.g, runColor.b, 1f);
-            */
             
             resetButton.interactable = false;
-            /*var resetColor = resetButton.transform.GetChild(0).GetComponent<Image>().tintColor;
-            resetButton.transform.GetChild(0).GetComponent<Image>().tintColor = new Color(resetColor.r, resetColor.g, resetColor.b, 0.5f);
-            */
 
             accelerationInputField.interactable = true;
         }
