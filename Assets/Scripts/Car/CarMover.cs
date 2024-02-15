@@ -10,6 +10,7 @@ public class CarMover : MonoBehaviour
     public enum State { Waiting, Running }
     
     public LevelController lc;
+    public Transform frontPoint;
 
     public float startingSpeed;
 
@@ -46,7 +47,7 @@ public class CarMover : MonoBehaviour
                 GetComponent<Rigidbody2D> ().velocity.y
             );
             
-            var hits = Physics2D.OverlapCircleAll(transform.position + new Vector3(2.5f, 0, 0), 1.5f);
+            var hits = Physics2D.OverlapCircleAll(transform.position + new Vector3(2f, 0, 0), 1.5f);
             foreach (var c in hits)
             {
                 if (!c.CompareTag("box")) return;
@@ -62,6 +63,6 @@ public class CarMover : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position + new Vector3(2.5f, 0, 0), 1.5f);
+        Gizmos.DrawWireSphere(transform.position + new Vector3(2f, 0, 0), 1.5f);
     }
 }

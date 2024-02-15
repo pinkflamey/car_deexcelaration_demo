@@ -53,5 +53,6 @@ public class LevelController : MonoBehaviour
         yield return new WaitForSeconds(slowResetDelay);
         Reset();
         slowResetCoroutine = null;
+        yield return null;
     }
 }

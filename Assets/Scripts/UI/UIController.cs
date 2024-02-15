@@ -37,13 +37,13 @@ public class UIController : MonoBehaviour
     private void InitializeDistanceMeter()
     {
         distanceSlider.minValue = 0;
-        distanceSlider.maxValue = Vector2.Distance(lc.carMover.transform.position,
+        distanceSlider.maxValue = Vector2.Distance(lc.carMover.frontPoint.position,
             lc.resetPoint.position);
     }
 
     private void UpdateDistanceMeter()
     {
-        var distance = Vector2.Distance(lc.carMover.transform.position,
+        var distance = Vector2.Distance(lc.carMover.frontPoint.position,
             lc.resetPoint.position);
         if (lc.carMover.transform.position.x > lc.resetPoint.position.x)
         {
