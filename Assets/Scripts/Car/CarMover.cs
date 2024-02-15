@@ -12,38 +12,46 @@ public class CarMover : MonoBehaviour
     public LevelController lc;
     public Transform frontPoint;
 
-    public float startingSpeed;
+    public float startingSpeedKm;
 
-    public float speed;
+    public float speedKm;
+    public float Speed { get; private set; }
     public float acceleration;
-    public float minSpeed;
-    public float maxSpeed;
+    public float minSpeedKm;
+    public float maxSpeedKm;
 
     public State carState;
 
     private void Start()
     {
-        speed = startingSpeed / 3.6f;
+        ResetSpeed();
+    }
+
+    public void ResetSpeed()
+    {
+        Speed = startingSpeedKm / 3.6f;
     }
 
     private void Update()
     {
+        speedKm = Speed * 3.6f;
+        
         if (carState == State.Running)
         {
-            speed += acceleration * Time.deltaTime;
+            Speed += acceleration * Time.deltaTime;
             
-            if (speed > maxSpeed)
+            if (Speed > maxSpeedKm / 3.6f)
             {
-                speed = maxSpeed;
+                Speed = maxSpeedKm / 3.6f;
             }
 
-            if (speed < minSpeed)
+            if (Speed < minSpeedKm / 3.6f)
             {
-                speed = minSpeed;
+                Speed = minSpeedKm / 3.6f;
             }
 
             GetComponent<Rigidbody2D> ().velocity = new Vector3(
-                speed,
+                Speed,
                 GetComponent<Rigidbody2D> ().velocity.y
             );
             

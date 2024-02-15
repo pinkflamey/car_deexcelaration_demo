@@ -33,7 +33,7 @@ public class LevelController : MonoBehaviour
     public void Reset()
     {
         carMover.carState = CarMover.State.Waiting;
-        carMover.speed = carMover.startingSpeed;
+        carMover.ResetSpeed();
         carMover.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         carMover.GetComponent<Rigidbody2D>().angularVelocity = 0;
         carMover.acceleration = 0;
