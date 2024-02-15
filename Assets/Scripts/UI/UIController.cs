@@ -20,21 +20,17 @@ public class UIController : MonoBehaviour
     [Header("Buttons")]
     public UnityEngine.UI.Button runButton;
     public UnityEngine.UI.Button resetButton;
-
-    private Coroutine blinkInputFieldCoroutine;
     
 
     private void Start()
     {
         InitializeDistanceMeter();
-        blinkInputFieldCoroutine = StartCoroutine(BlinkInputField(accelerationInputField));
     }
 
     private void Update()
     {
         UpdateDistanceMeter();
         UpdateButtons();
-        if (blinkInputFieldCoroutine == null) StartCoroutine(BlinkInputField(accelerationInputField));
     }
 
     private void InitializeDistanceMeter()
@@ -108,15 +104,5 @@ public class UIController : MonoBehaviour
     public void ResetButton()
     {
         lc.Reset();
-    }
-
-    private IEnumerator BlinkInputField(TMP_InputField inputField)
-    {
-        yield return new WaitForSeconds(1f);
-        inputField.placeholder.GetComponent<TextMeshProUGUI>().text = inputFieldTextBlinking;
-        yield return new WaitForSeconds(1f);
-        inputField.placeholder.GetComponent<TextMeshProUGUI>().text = inputFieldText;
-
-        blinkInputFieldCoroutine = null;
     }
 }
