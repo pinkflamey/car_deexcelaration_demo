@@ -42,7 +42,7 @@ public class UIController : MonoBehaviour
     {
         var distance = Vector2.Distance(lc.carMover.frontPoint.position,
             lc.resetPoint.position);
-        if (lc.carMover.transform.position.x >= lc.resetPoint.position.x)
+        if (lc.carMover.frontPoint.position.x >= lc.resetPoint.position.x)
         {
             distanceSlider.value = 0;
             distanceText.text = "0m";

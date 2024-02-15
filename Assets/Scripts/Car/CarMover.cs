@@ -15,7 +15,7 @@ public class CarMover : MonoBehaviour
     public float startingSpeedKm;
 
     public float speedKm;
-    public float Speed { get; private set; }
+    public float speedMeters;
     public float acceleration;
     public float minSpeedKm;
     public float maxSpeedKm;
@@ -29,29 +29,29 @@ public class CarMover : MonoBehaviour
 
     public void ResetSpeed()
     {
-        Speed = startingSpeedKm / 3.6f;
+        speedMeters = startingSpeedKm / 3.6f;
     }
 
     private void Update()
     {
-        speedKm = Speed * 3.6f;
+        speedKm = speedMeters * 3.6f;
         
         if (carState == State.Running)
         {
-            Speed += acceleration * Time.deltaTime;
+            speedMeters += acceleration * Time.deltaTime;
             
-            if (Speed > maxSpeedKm / 3.6f)
+            if (speedMeters > maxSpeedKm / 3.6f)
             {
-                Speed = maxSpeedKm / 3.6f;
+                speedMeters = maxSpeedKm / 3.6f;
             }
 
-            if (Speed < minSpeedKm / 3.6f)
+            if (speedMeters < minSpeedKm / 3.6f)
             {
-                Speed = minSpeedKm / 3.6f;
+                speedMeters = minSpeedKm / 3.6f;
             }
 
             GetComponent<Rigidbody2D> ().velocity = new Vector3(
-                Speed,
+                speedMeters,
                 GetComponent<Rigidbody2D> ().velocity.y
             );
             

@@ -362,7 +362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7689012026500214191, guid: c500d7ae3c2018d4b8f481fc4c8feef7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 38.93
+      value: 30.3
       objectReference: {fileID: 0}
     - target: {fileID: 7689012026500214191, guid: c500d7ae3c2018d4b8f481fc4c8feef7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1196,7 +1196,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -117.14285, y: 36.17714, z: -141.17142}
+  m_LocalPosition: {x: -100.5, y: 36.17714, z: -141.17142}
   m_LocalScale: {x: -2.8571427, y: 2.8571427, z: 2.8571427}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2213,7 +2213,19 @@ MonoBehaviour:
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1462787925}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: UpdateAccelerationSetting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
@@ -2718,8 +2730,6 @@ MonoBehaviour:
   distanceSlider: {fileID: 512655572}
   distanceText: {fileID: 583885131}
   accelerationInputField: {fileID: 1127166554}
-  inputFieldText: Acceleration
-  inputFieldTextBlinking: 'Acceleration:'
   runButton: {fileID: 617359438}
   resetButton: {fileID: 1182717098}
 --- !u!1 &1516515181
@@ -3002,7 +3012,7 @@ Transform:
   m_GameObject: {fileID: 1544559052}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 35.5, y: -14.2, z: 0.40854675}
+  m_LocalPosition: {x: 26.869999, y: -14.2, z: 0.40854675}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3838,6 +3848,7 @@ MonoBehaviour:
   frontPoint: {fileID: 1171233646}
   startingSpeedKm: 100
   speedKm: 0
+  speedMeters: 0
   acceleration: 0
   minSpeedKm: 0
   maxSpeedKm: 120

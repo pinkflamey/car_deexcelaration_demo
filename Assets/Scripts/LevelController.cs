@@ -36,7 +36,6 @@ public class LevelController : MonoBehaviour
         carMover.ResetSpeed();
         carMover.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         carMover.GetComponent<Rigidbody2D>().angularVelocity = 0;
-        carMover.acceleration = 0;
         carMover.GetComponent<Rigidbody2D>().rotation = 0;
         transform.rotation = new Quaternion(0, 0, 0, 0);
         carMover.transform.position = startPos;
