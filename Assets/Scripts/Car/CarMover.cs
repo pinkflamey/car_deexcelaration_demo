@@ -13,12 +13,12 @@ public class CarMover : MonoBehaviour
     public Transform frontPoint;
 
     public float startingSpeedKm;
-
     public float speedKm;
     public float speedMeters;
     public float acceleration;
     public float minSpeedKm;
     public float maxSpeedKm;
+    [Range(0.1f, 2f)] public float hitRadius;
 
     public State carState;
 
@@ -55,7 +55,7 @@ public class CarMover : MonoBehaviour
                 GetComponent<Rigidbody2D> ().velocity.y
             );
             
-            var hits = Physics2D.OverlapCircleAll(transform.position + new Vector3(2f, 0, 0), 1.5f);
+            var hits = Physics2D.OverlapCircleAll(transform.position + new Vector3(2f, 0, 0), hitRadius);
             foreach (var c in hits)
             {
                 if (!c.CompareTag("box")) return;
@@ -71,6 +71,6 @@ public class CarMover : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position + new Vector3(2f, 0, 0), 1.5f);
+        Gizmos.DrawWireSphere(transform.position + new Vector3(2f, 0, 0), hitRadius);
     }
 }
