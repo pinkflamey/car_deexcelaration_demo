@@ -6,10 +6,8 @@
     <title>Unity WebGL Player | car_deexcelaration_demo</title>
   </head>
   <body style="text-align: center; padding: 0; border: 0; margin: 0;">
-	<div width=1536 height=658>
-		<canvas id="unity-canvas" width=1536 height=658 tabindex="-1" style="width: 1536px; height: 658px; background: #231F20"></canvas>
-    </div>
-	<script src="Build/Car_deaccelerator_demo_1.1.loader.js"></script>
+    <canvas id="unity-canvas" width=1280 height=350 tabindex="-1" style="width: 1280px; height: 350px; background: #231F20"></canvas>
+    <script src="Build/Car_deaccelerator_demo_1.1-WebGL.loader.js"></script>
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         // Mobile device style: fill the whole browser client area with the game canvas:
@@ -27,13 +25,13 @@
       }
 
       createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/Car_deaccelerator_demo_1.1.data",
-        frameworkUrl: "Build/Car_deaccelerator_demo_1.1.framework.js",
-        codeUrl: "Build/Car_deaccelerator_demo_1.1.wasm",
+        dataUrl: "Build/Car_deaccelerator_demo_1.1-WebGL.data",
+        frameworkUrl: "Build/Car_deaccelerator_demo_1.1-WebGL.framework.js",
+        codeUrl: "Build/Car_deaccelerator_demo_1.1-WebGL.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "car_deexcelaration_demo",
-        productVersion: "1.0",
+        productVersion: "1.1",
         // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
         // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
       });
