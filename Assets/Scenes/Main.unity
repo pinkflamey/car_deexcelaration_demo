@@ -1714,7 +1714,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd3be0c3a4b289f4e978b8e024e76ae3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeOfWheel: 0.32
+  sizeOfWheel: 2
   radius: 0
   speed: 0
   rotRad: 0
@@ -2936,7 +2936,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd3be0c3a4b289f4e978b8e024e76ae3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeOfWheel: 0.32
+  sizeOfWheel: 2
   radius: 0
   speed: 0
   rotRad: 0

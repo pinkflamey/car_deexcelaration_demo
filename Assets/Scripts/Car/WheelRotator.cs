@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class WheelRotator : MonoBehaviour
 {
-    [Header("Settings")]
-    public float sizeOfWheel = 1f;
+    [Header("Settings")] public float sizeOfWheel;
 
     [Header("Calculated")]
     public float radius;
@@ -29,15 +28,15 @@ public class WheelRotator : MonoBehaviour
      */
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        speed = carMover.GetComponent<Rigidbody2D>().velocity.x;
+        if (carMover.carState != CarMover.State.Running) return;
+        
+        speed = carMover.speedMeters;
 
         rotRad = (speed * Time.deltaTime) / radius;
         rotDeg = rotRad * Mathf.Rad2Deg;
 
-        transform.Rotate(0, 0, -rotDeg);
-
-
+        transform.Rotate(0, 0, rotDeg);
     }
 }
